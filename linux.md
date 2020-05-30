@@ -79,7 +79,25 @@
         # Add default route through intf eth0 to gw 192.168.1.254
         route add default gw 192.168.1.254 eth0
 
-1. Misc commands
+1. netcat (nc)
+
+        nc -l 555       ;; start TCP server listening on port 555
+        nc -k -l 555    ;; continue listening after client is disconnected.
+
+        nc localhost 555 < in.txt       ;; connect to tcp server listening on port 555 and send it data
+
+        # start single use HTTP server listening on port 80
+        ( echo -ne "HTTP/1.1 200 OK Content-Length: $(wc -c <index.html)\r\n\r\n" ; cat index.html ) | nc -l 8080
+
+        # HTTP server restarted after each request
+        while : ; do ( echo -ne "HTTP/1.1 200 OK\r\nContent-Length: $(wc -c <index.html)\r\n\r\n" ; cat index.html; ) | nc -l -p 8080 ; done
+
+        # port scanning
+        nc -zv google.com 80
+        nc -zv google.com 80-84
+        nc -zv google.com 80 443
+
+2. Misc commands
 
         # print disk usage by folder sorted by size
         sudo du / --max-depth=1 -h 2> /dev/null | sort -hr

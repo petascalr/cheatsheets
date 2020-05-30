@@ -57,7 +57,7 @@
 
 1. Get number of files changed/added/deleted per author.
 
-        git log --shortstat --author="Anna Povzner" | grep -E "fil(e|es) changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed: ", files, "lines inserted: ", inserted, "lines deleted: ", deleted }'
+        git log --shortstat --author="Liviu Gheorghisan" | grep -E "fil(e|es) changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed: ", files, "lines inserted: ", inserted, "lines deleted: ", deleted }'
 
 
 1. Create git patches (with git metadata in them) out of the last 3 commits.
