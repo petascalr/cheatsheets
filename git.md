@@ -67,3 +67,12 @@
 1. Delete merged branches.
    
         git branch --merged | egrep -v "(*|master|dev)" | xargs git branch -d
+
+1. Diff file between 2 branches
+
+        git diff mybranch master -- MyClass.java
+        git diff mybranch..master -- MyClass.java
+
+        # diff between current branch and master
+        git diff master 
+
