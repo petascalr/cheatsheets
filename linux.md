@@ -26,3 +26,34 @@
         echo 'one two three' | xarg -t mkdir
 
         find . -name *.txt | xarg -t rm -f
+
+1. Networking commands
+
+        # Display arp table.
+        arp -evn
+
+1. Misc commands
+
+        # list all procs that opened a specific file
+        lsof /var/log/syslog
+
+        # list all procs that opened files from a directory
+        lsof +D /var/log/
+
+        # list opened files by a specific user
+        lsof -u liviu
+
+        # list all files opened by a specific proc
+        lsof -p 1456
+
+        # kill all procs belonging to a user
+        kill -9 `lsof -t -u lakshmanan`
+
+        # list all network connections (-i4 / -i6)
+        lsof -i
+
+        # see all processes listening on a specific port
+        lsof -i :ssh
+
+        # list all TCP or UDP connections
+        lsof -i tcp; lsof -i udp
