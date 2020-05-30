@@ -32,7 +32,7 @@
         # Display arp table.
         arp -evn
 
-1. Misc commands
+1. lsof
 
         # list all procs that opened a specific file
         lsof /var/log/syslog
@@ -57,3 +57,32 @@
 
         # list all TCP or UDP connections
         lsof -i tcp; lsof -i udp
+
+1. netstat
+
+        netstat -a              ;; show both listening and non listening ports.
+        netstat -at             ;; show all tcp ports.
+        netstat -au             ;; show all udp ports.
+        netstat -l              ;; show only listening ports
+        netstat -lt             ;; show listening tcp ports
+        netstat -lu             ;; show listening udp ports
+        netstat -lx             ;; show listening UNIX ports
+        netstat -s              ;; show statistics for all ports.
+        netstat -st             ;; show statistics for tcp ports. -su for udp ports.
+        netstat -p              ;; show program names
+        netstat -nutlp          ;; show listening tcp and udp ports with numeric (no name resolution) and program name
+
+1. route
+
+        route -n                ;; print routing table and don't perform name resolution
+
+        # Add default route through intf eth0 to gw 192.168.1.254
+        route add default gw 192.168.1.254 eth0
+
+1. Misc commands
+
+        # print disk usage by folder sorted by size
+        sudo du / --max-depth=1 -h 2> /dev/null | sort -hr
+
+        # Prepend location to PATH
+        PATH=/home/liviu/app:$PATH
